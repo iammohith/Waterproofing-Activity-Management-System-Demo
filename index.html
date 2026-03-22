@@ -1520,7 +1520,7 @@
     /* ═══════════════════════════════════════════════════
    PROCESS FLOW ROWS (§2.1) — base styles
 ═══════════════════════════════════════════════════ */
-    .flow-list { display: flex; flex-direction: column; gap: 0; }
+    .flow-list { display: flex; flex-direction: column; gap: 0; min-width: 480px; }
     .flow-row {
       display: grid; grid-template-columns: 160px 24px 1fr;
       align-items: center; gap: 8px; padding: 10px 0;
@@ -1614,9 +1614,7 @@
       .stats-strip { grid-template-columns: 1fr 1fr; }
       .glossary-grid { grid-template-columns: 1fr; }
 
-      /* Process flow §2.1 */
-      .flow-row { grid-template-columns: 100px 20px 1fr; gap: 6px; }
-      .flow-row > div:first-child { font-size: 9px; }
+      /* Process flow §2.1 — scrollable on mobile, no column override needed */
 
       /* Data cards */
       .data-card-header { padding: 14px 16px; gap: 10px; }
@@ -1629,7 +1627,6 @@
       /* Stage submit footer */
       .submit-footer { flex-direction: column; padding: 14px; }
       .submit-btn { width: 100%; text-align: center; }
-      .demo-fab { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 12px; }
 
       /* Product footer */
       .pf-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1672,8 +1669,6 @@
       .dir-kpi-num { font-size: 26px; }
       .section-header { flex-direction: column; gap: 6px; }
       .section-header-text h2 { font-size: 18px; }
-      .flow-row { grid-template-columns: 80px 18px 1fr; gap: 4px; }
-      .flow-row > div:first-child { font-size: 8px; letter-spacing: 0.5px; }
       .app-topnav { padding: 8px 10px; }
       .nav-brand { font-size: 12px; }
       .nav-actions { gap: 6px; }
@@ -1681,12 +1676,10 @@
       .dir-appbar-sub { display: none; }
       .stage-pill { width: 32px; height: 32px; font-size: 13px; }
       .pf-grid > div:last-child { display: none; }
-      .demo-fab { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 12px; gap: 6px; }
-      .demo-fab-dot { display: none; }
     }
 
     /* ═══════════════════════════════════════════════════
-   RESPONSIVE — CHECKLIST TABLE (≤640px)
+   RESPONSIVE — CHECKLIST TABLE (≤640px) — keep existing
 ═══════════════════════════════════════════════════ */
     .stage-progress {
       display: flex;
@@ -2229,7 +2222,6 @@
     .demo-success-icon { font-size: 40px; margin-bottom: 12px; }
     .demo-success-title { font-family: 'Spectral', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
     .demo-success-msg { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
-    .demo-form-wrap {}
 
     /* ═══ QC PENDING PANEL ═══ */
     .qc-pending-panel {
