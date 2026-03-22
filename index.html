@@ -2083,8 +2083,9 @@
     .dir-pipe-count { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); }
     .dir-pipe-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
     .dir-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+    .dir-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .dir-two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
-    .dir-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .dir-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
     .dir-table th { background: var(--ink2); color: rgba(255,255,255,0.75); padding: 10px 16px; text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .dir-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.45; }
     .dir-table tr:last-child td { border-bottom: none; }
@@ -2309,9 +2310,9 @@
       .dir-two-col { grid-template-columns: 1fr !important; gap: 16px !important; }
       .dir-section-title { font-size: 15px !important; }
 
-      /* Make dir-card tables scroll horizontally rather than overflow */
-      .dir-card { overflow-x: auto !important; }
-      .dir-table { font-size: 12px !important; min-width: 480px; }
+      /* Activity register table — scrolls horizontally inside card */
+      .dir-table-wrap { border-radius: 0; }
+      .dir-table { font-size: 12px !important; }
       .dir-table th { padding: 8px 10px !important; }
       .dir-table td { padding: 8px 10px !important; }
 
@@ -2665,6 +2666,7 @@
         <div>
           <div class="dir-section-title">Live Activity Register</div>
           <div class="dir-card">
+            <div class="dir-table-wrap">
             <table class="dir-table">
               <thead>
                 <tr>
@@ -2720,6 +2722,7 @@
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
         </div>
 
