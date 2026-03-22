@@ -1080,6 +1080,7 @@
       border-collapse: collapse;
       font-size: 13px;
       margin-bottom: 20px;
+      min-width: 480px;
     }
 
     table.matrix th {
@@ -1127,6 +1128,7 @@
       border-collapse: collapse;
       font-size: 13px;
       margin-bottom: 20px;
+      min-width: 480px;
     }
 
     table.rules th {
@@ -1554,7 +1556,7 @@
       .dir-two-col { grid-template-columns: 1fr; }
       .pf-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
       .qc-pending-row { grid-template-columns: 44px 1fr 1fr; }
-      .qc-pending-row .qc-pend-action { display: none; }
+      .qc-pending-row .qc-pend-action { display: block; }
     }
 
     /* ═══════════════════════════════════════════════════
@@ -1596,11 +1598,11 @@
       .dir-table th { padding: 8px 10px; }
       .dir-table td { padding: 8px 10px; }
 
-      /* QC pending panel */
-      .qc-pending-row { grid-template-columns: 36px 1fr; gap: 10px; padding: 12px 14px; }
-      .qc-pend-submitted { display: none; }
-      .qc-pend-action { display: none; }
-      .qc-pending-head { padding: 12px 14px; }
+      /* QC pending panel — use scroll, keep all columns */
+      .qc-pending-row { padding: 12px 16px; gap: 12px; }
+      .qc-pend-submitted { display: flex; }
+      .qc-pend-action { display: block; }
+      .qc-pending-head { padding: 12px 16px; }
 
       /* Section layout */
       .section-header { gap: 12px; }
@@ -1648,6 +1650,7 @@
 
       /* Cons table */
       table.cons { font-size: 11px; }
+      .cons-project-row { grid-template-columns: 1fr 1fr; }
 
       /* TOC */
       .toc-section { padding: 28px 20px; }
@@ -2083,9 +2086,13 @@
     .dir-pipe-count { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); }
     .dir-pipe-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
     .dir-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
-    .dir-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .dir-card--scroll { overflow: visible; }
+    .dir-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; }
+    .qc-pending-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .dir-two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
     .dir-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+    .dir-table thead tr th:first-child { border-radius: 10px 0 0 0; }
+    .dir-table thead tr th:last-child { border-radius: 0 10px 0 0; }
     .dir-table th { background: var(--ink2); color: rgba(255,255,255,0.75); padding: 10px 16px; text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .dir-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.45; }
     .dir-table tr:last-child td { border-bottom: none; }
@@ -2108,9 +2115,9 @@
     .dir-pend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
     .dir-pend-dot.qc-dot { background: var(--gold); }
     .dir-pend-dot.ov-dot { background: var(--no-fill); }
-    .dir-pend-text { font-size: 12.5px; color: var(--ink2); line-height: 1.5; }
+    .dir-pend-text { font-size: 12.5px; color: var(--ink2); line-height: 1.5; overflow-wrap: break-word; word-break: break-word; }
     .dir-pend-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
-    .dir-recent-item { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--ink2); }
+    .dir-recent-item { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--ink2); overflow-wrap: break-word; word-break: break-word; }
     .dir-recent-item:last-child { border-bottom: none; }
     .dir-check { color: var(--yes-fill); font-size: 15px; flex-shrink: 0; }
 
@@ -2227,12 +2234,14 @@
     /* ═══ QC PENDING PANEL ═══ */
     .qc-pending-panel {
       background: #fff; border: 1px solid var(--border); border-radius: 10px;
-      overflow: hidden; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      overflow: visible; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
     .qc-pending-head {
       background: var(--ink); color: #fff; padding: 14px 22px;
       display: flex; align-items: center; justify-content: space-between;
+      border-radius: 10px 10px 0 0;
     }
+    .qc-pending-body { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 0 0 10px 10px; }
     .qc-pending-head-title { font-family: 'Spectral', serif; font-size: 17px; font-weight: 600; }
     .qc-pending-head-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
     .qc-pending-count { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--gold-border); }
@@ -2240,7 +2249,7 @@
       display: grid; grid-template-columns: 44px 1fr 180px 130px;
       align-items: center; gap: 16px; padding: 14px 22px;
       border-bottom: 1px solid var(--border); cursor: pointer;
-      transition: background 0.12s;
+      transition: background 0.12s; min-width: 520px;
     }
     .qc-pending-row:last-child { border-bottom: none; }
     .qc-pending-row:hover { background: #f8fafc; }
@@ -2277,7 +2286,8 @@
     ═══════════════════════════════════════════════════ */
 
     /* Prevent any child from blowing out the viewport width */
-    body { overflow-x: hidden; }
+    #director-view { overflow-x: hidden; }
+    .doc-wrap { overflow-x: hidden; }
 
     @media (max-width: 768px) {
       /* Role selector — force single column */
@@ -2297,7 +2307,7 @@
 
       /* Director dashboard */
       .dir-appbar { padding: 10px 14px !important; flex-wrap: wrap !important; gap: 8px !important; }
-      .dir-content { padding: 14px !important; }
+      .dir-content { padding: 14px !important; width: 100% !important; box-sizing: border-box !important; }
       .dir-kpi-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
       .dir-pipeline {
         grid-template-columns: 1fr 1fr !important;
@@ -2311,20 +2321,22 @@
       .dir-section-title { font-size: 15px !important; }
 
       /* Activity register table — scrolls horizontally inside card */
-      .dir-table-wrap { border-radius: 0; }
+      .dir-table-wrap { max-width: 100%; }
       .dir-table { font-size: 12px !important; }
       .dir-table th { padding: 8px 10px !important; }
       .dir-table td { padding: 8px 10px !important; }
 
-      /* QC pending panel rows */
-      .qc-pending-row {
-        grid-template-columns: 36px 1fr !important;
-        gap: 10px !important;
-        padding: 12px 14px !important;
-      }
-      .qc-pend-submitted { display: none !important; }
-      .qc-pend-action { display: none !important; }
-      .qc-pending-head { padding: 12px 14px !important; }
+      /* Pending Actions + Recent Approvals — text wraps, no overflow */
+      .dir-pad { padding: 14px 16px !important; }
+      .dir-pend-text { font-size: 12px !important; }
+      .dir-recent-item { font-size: 12px !important; }
+
+      /* QC pending panel — scrolls horizontally, all columns stay visible */
+      .qc-pending-body { max-width: 100%; }
+      .qc-pending-row { padding: 12px 16px !important; gap: 12px !important; }
+      .qc-pending-head { padding: 12px 16px !important; }
+      .qc-pend-submitted { display: flex !important; }
+      .qc-pend-action { display: block !important; }
 
       /* Assignment row — wrap on small screens */
       .assign-row { flex-wrap: wrap !important; }
@@ -2416,7 +2428,7 @@
   </div>
 
   <!-- QC PENDING PANEL (only visible in QC role, injected before doc-wrap content) -->
-  <div class="qc-pending-panel" id="qcPendingPanel" style="display:none;max-width:1100px;margin:28px auto 0;">
+  <div class="qc-pending-panel" id="qcPendingPanel" style="display:none;max-width:1100px;margin:28px auto 0;box-sizing:border-box;width:100%;">
     <div class="qc-pending-head">
       <div>
         <div class="qc-pending-head-title">Stages Pending Your QC Review</div>
@@ -2424,6 +2436,7 @@
       </div>
       <div class="qc-pending-count">2</div>
     </div>
+    <div class="qc-pending-body">
     <div class="qc-pending-row" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})">
       <div class="qc-pend-num" style="background:var(--s1);">1</div>
       <div>
@@ -2441,6 +2454,7 @@
       </div>
       <div class="qc-pend-submitted">Submitted by<br><span>WP Team · 2 hours ago</span></div>
       <div class="qc-pend-action"><button class="qc-pend-btn">Review Now →</button></div>
+    </div>
     </div>
   </div>
 
@@ -2665,7 +2679,7 @@
       <div class="dir-two-col">
         <div>
           <div class="dir-section-title">Live Activity Register</div>
-          <div class="dir-card">
+          <div class="dir-card dir-card--scroll">
             <div class="dir-table-wrap">
             <table class="dir-table">
               <thead>
