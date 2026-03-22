@@ -81,7 +81,7 @@ Activity Closed — Consolidated Record Generated
 ## Getting Started
 
 ### View the demo
-Simply open the live URL: **[https://yourusername.github.io/qualitytrack-wp](https://yourusername.github.io/qualitytrack-wp)**
+Simply open the live URL: **[https://iammohith.github.io/qualitytrack-wp](https://iammohith.github.io/qualitytrack-wp)**
 
 ### Run locally
 ```bash
