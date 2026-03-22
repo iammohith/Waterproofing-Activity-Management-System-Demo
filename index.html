@@ -2267,6 +2267,79 @@
     body[class*="role-engineer"] .eng-welcome-strip { display: flex; }
     body:not([class*="role-engineer"]) .eng-welcome-strip { display: none; }
 
+    /* ═══════════════════════════════════════════════════
+       LATE-OVERRIDE RESPONSIVE FIXES
+       The role-selector, director-dashboard, and QC panel
+       CSS above is defined after the main media-query blocks,
+       so it overrides them. These rules re-apply mobile
+       overrides with higher source-order specificity.
+    ═══════════════════════════════════════════════════ */
+
+    /* Prevent any child from blowing out the viewport width */
+    body { overflow-x: hidden; }
+
+    @media (max-width: 768px) {
+      /* Role selector — force single column */
+      .role-selector-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      /* Engineer sub-grid — 2 columns max */
+      .eng-subgrid {
+        grid-template-columns: 1fr 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .role-confirm-row { flex-wrap: wrap; }
+      .enter-btn { width: 100%; text-align: center; margin-left: 0; }
+
+      /* Director dashboard */
+      .dir-appbar { padding: 10px 14px !important; flex-wrap: wrap !important; gap: 8px !important; }
+      .dir-content { padding: 14px !important; }
+      .dir-kpi-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+      .dir-pipeline {
+        grid-template-columns: 1fr 1fr !important;
+        overflow-x: auto !important;
+      }
+      .dir-pipeline .dir-pipe-step { border-top: 1px solid var(--border) !important; border-right: none !important; }
+      .dir-pipeline .dir-pipe-step:nth-child(odd) { border-right: 1px solid var(--border) !important; }
+      .dir-pipeline .dir-pipe-step:nth-child(1),
+      .dir-pipeline .dir-pipe-step:nth-child(2) { border-top: none !important; }
+      .dir-two-col { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .dir-section-title { font-size: 15px !important; }
+
+      /* Make dir-card tables scroll horizontally rather than overflow */
+      .dir-card { overflow-x: auto !important; }
+      .dir-table { font-size: 12px !important; min-width: 480px; }
+      .dir-table th { padding: 8px 10px !important; }
+      .dir-table td { padding: 8px 10px !important; }
+
+      /* QC pending panel rows */
+      .qc-pending-row {
+        grid-template-columns: 36px 1fr !important;
+        gap: 10px !important;
+        padding: 12px 14px !important;
+      }
+      .qc-pend-submitted { display: none !important; }
+      .qc-pend-action { display: none !important; }
+      .qc-pending-head { padding: 12px 14px !important; }
+
+      /* Assignment row — wrap on small screens */
+      .assign-row { flex-wrap: wrap !important; }
+      .assign-label { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .role-selector-grid { grid-template-columns: 1fr !important; }
+      .eng-subgrid { grid-template-columns: 1fr 1fr !important; }
+      .dir-kpi-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+      .dir-pipeline { grid-template-columns: 1fr !important; }
+      .dir-pipeline .dir-pipe-step { border-right: none !important; }
+      .dir-kpi-num { font-size: 26px !important; }
+      .dir-appbar-sub { display: none !important; }
+    }
+
   </style>
 </head>
 
@@ -2384,17 +2457,17 @@
       <li><a href="#s1"><span class="stoc-num">1</span><span class="stoc-label">Executive Summary</span></a></li>
       <li><a href="#s2"><span class="stoc-num">2</span><span class="stoc-label">Architecture &amp; Flow</span></a></li>
       <li><a href="#s3"><span class="stoc-num">3</span><span class="stoc-label">Activity Creation</span></a></li>
-      <div class="toc-divider-thin"></div>
+      <li class="toc-divider-thin"></li>
       <li><a href="#s4"><span class="stoc-num">4</span><span class="stoc-label">Stage 1 — RCC Readiness</span></a></li>
       <li><a href="#s5"><span class="stoc-num">5</span><span class="stoc-label">Stage 2 — MEP Core Cut</span></a></li>
       <li><a href="#s6"><span class="stoc-num">6</span><span class="stoc-label">Stage 3 — Surface Prep</span></a></li>
       <li><a href="#s7"><span class="stoc-num">7</span><span class="stoc-label">Stage 4 — WP Coating</span></a></li>
       <li><a href="#s8"><span class="stoc-num">8</span><span class="stoc-label">Stage 5 — Screed &amp; Final</span></a></li>
-      <div class="toc-divider-thin"></div>
+      <li class="toc-divider-thin"></li>
       <li><a href="#s9"><span class="stoc-num">9</span><span class="stoc-label">Validation Logic</span></a></li>
       <li><a href="#s10"><span class="stoc-num">10</span><span class="stoc-label">Consolidated Record</span></a></li>
       <li><a href="#s11"><span class="stoc-num">11</span><span class="stoc-label">Traceability Matrix</span></a></li>
-      <div class="toc-divider-thin"></div>
+      <li class="toc-divider-thin"></li>
       <li><a href="#app-a"><span class="stoc-num">A</span><span class="stoc-label">Glossary</span></a></li>
       <li><a href="#app-b"><span class="stoc-num">B</span><span class="stoc-label">Acronyms</span></a></li>
     </ul>
@@ -5862,7 +5935,7 @@
         badge.className = 'sp-badge sp-badge-done';
         badge.textContent = '✓ Approved';
       }
-      const nextLine = card.querySelector('.sp-progress .sp-line:not(.sp-done)');
+      const nextLine = card.querySelector('.stage-progress .sp-line:not(.sp-done)');
       if (nextLine) nextLine.classList.add('sp-done');
     }
 
