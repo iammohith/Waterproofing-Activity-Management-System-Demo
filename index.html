@@ -1850,14 +1850,12 @@
       padding: 14px 0 10px;
     }
     .sidebar-toc.toc-visible { transform: translateY(-50%) translateX(0); }
-    .sidebar-toc.toc-hidden, .pf-float-cta.toc-hidden { 
+    .sidebar-toc.toc-hidden { 
       transform: translateY(-50%) translateX(-100%) !important; 
       opacity: 0 !important; 
       pointer-events: none !important; 
     }
-    .pf-float-cta.toc-hidden { 
-      transform: translateY(-50%) translateX(100%) !important; 
-    }
+
     .sidebar-toc-title {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -2479,6 +2477,8 @@
     }
 
 
+
+
     /* ═══════════════════════════════════════════════════
        PRODUCT FOOTER
     ═══════════════════════════════════════════════════ */
@@ -2634,6 +2634,7 @@
       .pf-bottom { flex-direction: column; gap: 6px; text-align: center; }
     }
 
+
     /* ═══════════════════════════════════════════════════
    TOAST NOTIFICATIONS
 ═══════════════════════════════════════════════════ */
@@ -2671,6 +2672,15 @@
     .toast-content { flex: 1; }
     .toast-title { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
     .toast-msg { font-size: 13px; color: var(--ink2); line-height: 1.4; }
+
+    /* Footer hiding overrides */
+    .pf-float-cta.toc-hidden { 
+      transform: translateY(-50%) translateX(100%) !important; 
+      opacity: 0 !important; 
+      pointer-events: none !important;
+      transition: transform 0.4s ease, opacity 0.3s ease !important;
+    }
+
   </style>
 </head>
 
@@ -3760,6 +3770,14 @@
           </div>
         </div>
         <div class="data-card-body">
+          <!-- STAGE LOCK PANEL -->
+          <div class="stage-lock-panel" id="stage-lock-1">
+            <div class="lock-icon">🔒</div>
+            <div class="lock-title">This Stage is Locked</div>
+            <div class="lock-msg">This stage is locked until the Master Data checklist is filled and the Activity is created and assigned to the Civil Finish Team.</div>
+            <div class="lock-badge">Awaiting: Activity Creation (Assign)</div>
+          </div>
+          <div class="stage-form-body locked" id="stage-form-1">
 
           <!-- MASTER DATA HEADER (read-only inherited) -->
           <div class="master-header">
@@ -3944,6 +3962,7 @@
             <div class="qc-history-title">QC History Log</div>
             <div class="qc-history-list" id="qc-history-list-1"></div>
           </div>
+          </div><!-- /stage-form-body -->
         </div>
       </div>
     </div>
@@ -6413,6 +6432,7 @@
         
         // Unlock downstream buttons
         [1, 2, 3, 4, 5].forEach(updateSubmitBtn);
+        unlockStageCard(1);
         
         setTimeout(() => document.getElementById('s4')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 800);
       }, 1000);
@@ -7383,7 +7403,6 @@
       // Initial trigger to lock them on load
       [1, 2, 3, 4, 5].forEach(updateSubmitBtn);
     });
-
 
     /* ═══════════════════════════════════════════════════
        FOOTER OBSERVER — sidebar hide + floating CTA
