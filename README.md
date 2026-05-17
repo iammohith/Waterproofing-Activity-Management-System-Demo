@@ -157,8 +157,9 @@ QC raises NCR → Quality Head reviews → Approve: Activity FROZEN + 10-min tim
 | ⚠️ **NCR & Freeze Workflow** | QC raises NCR → QH approves → Activity frozen → 10-min escalation timer → Compliance submission → QC review. |
 | 📊 **Executive Dashboard** | Real-time KPIs, quality score donut chart, monthly trend bars, project health cards, NCR risk watch, and activity pipeline. |
 | 🔄 **Live Dashboard Sync** | All stage approvals, NCR events, and status changes automatically propagate to the Executive Dashboard via `syncPortfolio()`. |
-| 📱 **Fully Responsive** | Mobile hamburger menu with slide-in sidebar, tablet-optimized layouts, and desktop full-width views. Works on any device. |
-| 🖨️ **Print / PDF Ready** | Consolidated Activity Record includes print-optimized CSS for generating PDF documentation. |
+| 📱 **Fully Responsive** | Flawless mobile experience with fixed slide-in sidebar, horizontal scrollable tabs, and fluid 100vw constraints. Works on any device without horizontal overflow. |
+| 🎨 **Enterprise Aesthetics**| Premium MAANG-level UI featuring glassmorphism (frosted glass), deep radial dark-mode gradients, smooth cubic-bezier animations, and BI-style interactive glowing KPI cards. |
+| 🖨️ **Print / PDF Ready** | Consolidated Activity Record generates a strictly formatted, legally admissible "Confidential Internal Quality Assurance Record" PDF with formal headers. |
 | 📋 **Consolidated Record** | Auto-generated on activity closure — all locations, all stages, all QC decisions, DRG references, and photo evidence archived. |
 | 🏢 **Multi-Project Portfolio** | 3 projects (Skyline Residency Phase II, Metro Heights Phase I, Greenview Apartments) with 12 demo activities across multiple towers. |
 
