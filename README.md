@@ -60,7 +60,7 @@ Select your role on the cover page and the system adapts entirely to what you ne
 </tr>
 <tr>
 <td align="center"><b>📊<br>Project / Tower Manager</b></td>
-<td>Executive Dashboard with real-time KPIs — quality score donut chart, monthly trend bar charts, project health cards, NCR risk watch, activity pipeline table, and timeline.</td>
+<td>Executive Dashboard with real-time KPIs like quality score donut chart, monthly trend bar charts, project health cards, NCR risk watch, activity pipeline table, and timeline.</td>
 </tr>
 <tr>
 <td align="center"><b>🏢<br>Senior Management</b></td>
@@ -210,7 +210,7 @@ start index.html       # Windows
 xdg-open index.html    # Linux
 ```
 
-> Works on any device — desktop, tablet, or mobile. No internet required after download.
+> Works on any device like desktop, tablet, or mobile. No internet required after download.
 
 ---
 
@@ -251,7 +251,7 @@ Waterproofing-Activity-Management-System-Demo/
 
 ## 📬 Request a Demo
 
-If you are a real estate developer, construction company, or project management firm interested in deploying QualityTrack WP for your projects:
+If you are a real estate developer, construction company, or project management firm interested in deploying Quality Track for Water Proofing for your projects:
 
 <div align="center">
 
