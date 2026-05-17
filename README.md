@@ -4,7 +4,7 @@
 
 # Waterproofing Activity Management System
 
-**Enterprise digital quality control platform for waterproofing inspections in real estate construction — Multi-project portfolio management with role-based 5-stage gate process**
+**Enterprise digital quality control platform for waterproofing inspections in real estate construction for Multi-project portfolio management with role-based 5-stage gate process**
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-View_Now-0d1117?style=for-the-badge)](https://iammohith.github.io/Waterproofing-Activity-Management-System-Demo/)
 [![Request Demo](https://img.shields.io/badge/📋_Request_Demo-Google_Form-b45309?style=for-the-badge)](https://forms.gle/uaQC4HqngYENuAns9)
