@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/QualityTrack-WP-b45309?style=for-the-badge&logoColor=white" alt="QC Workflow Management System"/>
+<img src="https://img.shields.io/badge/QC Workflow Management System-b45309?style=for-the-badge&logoColor=white" alt="QC Workflow Management System"/>
 
 # Waterproofing Activity Management System
 
